@@ -1,5 +1,5 @@
-cs1520
-======
+CS 1520 - Programming Languages for Web Applications
+====================================================
 
 Most of the work for this class was done in another repo that was a semester long group project.
 
