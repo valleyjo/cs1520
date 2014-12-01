@@ -1,4 +1,4 @@
-<?php require "header.php"; 
+<?php require "header.php";
 session_start();
 
 // if there is anything in the session field, we'll display it as an error.
@@ -18,16 +18,17 @@ function writeFormField($id, $label, $type) {
 
 ?>
 
-<h1>Enter a message, person!</h1>
-<form method="post" action="submit_message.php">
+<h1>Complete a survey, person!</h1>
+<form method="post" action="submit_survey.php">
 
-<?php 
+<?php
 writeFormField('name', 'Name: ', 'text');
-writeFormField('subject', 'Subject: ', 'text');
-writeFormField('text', 'Text: ', 'textarea');
+writeFormField('question1', 'Favorite Color:'  , 'text');
+writeFormField('question2', 'Favorite Car: '   , 'text');
+writeFormField('question3', 'Favorite Liquor:' , 'text');
 ?>
 
 <input type="submit">
 </form>
-<br><a href="show_messages.php">back to message list</a>
+<br><a href="show_response.php">See Results</a>
 <?php require "footer.php"; ?>

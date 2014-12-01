@@ -1,4 +1,4 @@
-<?php require "header.php"; 
+<?php require "header.php";
 
 // let's establish a connection.
 $conn = new mysqli("localhost", "", "", "test");
@@ -7,25 +7,26 @@ if ($conn->connect_error) {
 } else {
 
   // once we've connected we'll retrieve the data from the DB.
-  $sql = "SELECT c_name, c_subject, c_time, c_text FROM t_messages";
+  $sql = "SELECT c_name, c_question1, c_question2, c_question3, c_time " .
+         "FROM t_messages";
   $result = $conn->query($sql);
-  
+
   // the num_rows property identifies how many records were returned by the query.
   if ($result->num_rows > 0) {
-  
+
     // for each result, we'll need to retrieve the underlying values.
     // when there are no more records, this will return null.
     while ($row = $result->fetch_assoc()) {
-    
+
       // we'll build some HTML out of the record.
       echo "Name: " . $row['c_name'] . "<br>";
-      echo "Subject: " . $row['c_subject'] . "<br>";
-      
+      echo "Favorite Color: " . $row['c_question1'] . "<br>";
+      echo "Favorite Car: " . $row['c_question2'] . "<br>";
+      echo "Favorite Liquor: " . $row['c_question2'] . "<br>";
+
       // this will format the time.
       $mytime = date('Y-m-d G:m', $row['c_time']);
-      echo "Time Posted: $mytime<br>";
-      echo "Message:<br>";
-      echo $row['c_text'];
+      echo "Time Submitted: $mytime<br>";
       echo "<br><br><br>";
     }
   } else {
@@ -36,5 +37,5 @@ if ($conn->connect_error) {
 $conn->close();
 
 ?>
-<a href="enter_message.php">post a new message</a>
+<a href="survey.php">Submit a Survey Responce</a>
 <?php require "footer.php"; ?>
